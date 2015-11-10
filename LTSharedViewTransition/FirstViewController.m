@@ -10,7 +10,7 @@
 #import "LTSharedViewTransition.h"
 
 @interface FirstViewController ()<LTSharedViewTransitionDataSource,UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIButton *smallView;
+@property (weak, nonatomic) IBOutlet UIImageView *smallView;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol LTSharedViewTransitionDataSource <NSObject>
--(UIView*)sharedView;
+- (UIView *)sharedView;
 @end
 
 @interface LTSharedViewTransition : NSObject<UIViewControllerAnimatedTransitioning>

@@ -10,11 +10,7 @@
 #import "LTSharedViewTransition.h"
 
 @interface SecondViewController ()<LTSharedViewTransitionDataSource>
-@property (weak, nonatomic) IBOutlet UIView *bigView;
-
-@property (weak, nonatomic) IBOutlet UIView *row1;
-@property (weak, nonatomic) IBOutlet UIView *row2;
-@property (weak, nonatomic) IBOutlet UIView *row3;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end
 
 @implementation SecondViewController
@@ -36,45 +32,17 @@
 
 -(UIView*) sharedView
 {
-    return self.bigView;
+    return self.imageView;
+}
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self animateViews:@[self.row1,self.row2,self.row3]];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void) animateViews:(NSArray *) views
-{
-    CGFloat diff = .05;
-    CGFloat height = self.view.bounds.size.height;
-
-    for (NSUInteger i = 0; i < [views count]; i++) {
-        UIView *view = [views objectAtIndex:i];
-        view.transform = CGAffineTransformMakeTranslation(0, height);
-        [UIView animateWithDuration:1.2 delay:diff*i usingSpringWithDamping:0.83
-              initialSpringVelocity:0 options:0 animations:^{
-                  view.transform = CGAffineTransformMakeTranslation(0, 0);
-              } completion:NULL];
-    }
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
