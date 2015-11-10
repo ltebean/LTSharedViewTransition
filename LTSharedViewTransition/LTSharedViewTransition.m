@@ -9,19 +9,14 @@
 #import "LTSharedViewTransition.h"
 
 @implementation LTSharedViewTransition
-
-- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-    return 0.3;
-}
-
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
     
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
     
-    UIView *sourceView = [(id<LTSharedViewTransitionDataSource>)fromViewController sharedView];
-    UIView *desticationView = [(id<LTSharedViewTransitionDataSource>)toViewController sharedView];
+    UIView* sourceView=[(id<LTSharedViewTransitionDataSource>)fromViewController sharedView];
+    UIView* desticationView=[(id<LTSharedViewTransitionDataSource>)toViewController sharedView];
     
     UIView *containerView = [transitionContext containerView];
     NSTimeInterval duration = [self transitionDuration:transitionContext];
@@ -32,7 +27,7 @@
     sourceView.hidden=YES;
     desticationView.hidden = YES;
     
-    toViewController.view.alpha = 0;
+    toViewController.view.alpha =0;
     
     [containerView addSubview:toViewController.view];
     [containerView addSubview:snapshotView];
@@ -53,5 +48,7 @@
     }];
 }
 
-
+- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
+    return 0.3;
+}
 @end
